@@ -2,7 +2,7 @@ import React from 'react'
 import {Headers} from './partials/Headers'
 import {Footer} from './partials/Footer'
 import { Container,Row, Col } from 'react-bootstrap'
-import './defaultLayout.css'
+import './defaultLayout.style.css'
 
 
 export const DefaultLayout = ({children}) => {

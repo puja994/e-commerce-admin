@@ -2,7 +2,6 @@
 import {DefaultLayout} from './components/layout/DefaultLayout'
 import {Login} from './pages/login/Login'
 import Dashboard from './pages/dashboard/Dashboard'
-import {Button} from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,6 +9,7 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
+import PasswordReset from './pages/password-reset/PasswordReset';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
   <Router>
     <Switch>
       <Route path='/dashboard'> <Dashboard /> </Route>
+      <Route path='/reset-password'> <PasswordReset /> </Route>
       <Route path='/'> <Login /> </Route>
     </Switch>
      </Router>
