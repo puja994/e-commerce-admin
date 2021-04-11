@@ -1,32 +1,30 @@
 import React from 'react'
-import {Headers} from './partials/Headers'
+import Headers from './partials/Headers'
 import {Footer} from './partials/Footer'
-import { Container,Row, Col } from 'react-bootstrap'
+import { Container,Row, Col,Jumbotron } from 'react-bootstrap'
 import './defaultLayout.style.css'
+import SideBarNav from '../sidebar/SideBarNav'
 
 
-export const DefaultLayout = ({children}) => {
+ const DefaultLayout = ({children}) => {
     return (
-        <div>
-
-            
-
-            <Row>
-             <Col xs={4}>
-               <div className="left-bar">
-                    i am from left
-                </div>
-             </Col>
-             <Col>
-                <div className="main">
+        <div className="default-layout">
+         <div className="left-bar">
+             <div className="admin-log p-2 mb-5">Admin pannel</div>
+       <SideBarNav/>
+         </div>
+             
+            <div className="main">
             <Headers />
+            <Jumbotron>
             {children}
+            </Jumbotron>
             <Footer />
                 </div>
-                </Col>
-            </Row>
+           
             </div>
            
        
     )
 }
+export default DefaultLayout;

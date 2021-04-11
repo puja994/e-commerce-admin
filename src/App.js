@@ -10,15 +10,30 @@ import {
 } from "react-router-dom";
 import './App.css';
 import PasswordReset from './pages/password-reset/PasswordReset';
+import Category from './pages/category/Category'
 
 function App() {
   return (
     <div className="App">
   <Router>
     <Switch>
-      <Route path='/dashboard'> <Dashboard /> </Route>
-      <Route path='/reset-password'> <PasswordReset /> </Route>
-      <Route path='/'> <Login /> </Route>
+      <Route exact path='/dashboard'> 
+      <Dashboard /> 
+      </Route>
+
+      <Route  path='/category'> 
+      <Category /> 
+      </Route>
+
+
+      <Route path='/reset-password'> 
+      <PasswordReset /> 
+      </Route>
+
+      <Route path='/'> 
+      <Login /> 
+      </Route>
+      
     </Switch>
      </Router>
     
