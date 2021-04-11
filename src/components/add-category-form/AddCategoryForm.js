@@ -1,5 +1,9 @@
 import React , {useState} from 'react'
-import {Form, Col, Button} from 'react-bootstrap'
+import {useDispatch, useSelector} from 'react-redux'
+import {Form, Col, Button, Spinner, Alert} from 'react-bootstrap'
+
+import {addNewCategory} from '../../pages/category/categoryAction'
+
 
 
 const initialState ={
@@ -8,6 +12,8 @@ const initialState ={
 }
 
 export const AddCategoryForm = () => {
+  const dispatch = useDispatch()
+   const {isLoading, status, message} = useSelector(state => state.category)
 
 const [category, setCategory] = useState(initialState)
 
@@ -21,13 +27,24 @@ const handleOnChange = e =>{
 
 const handleOnSubmit =e =>{
     e.preventDefault()
-    console.log(category)
+    dispatch(addNewCategory(category))
+    
 }
 
 
 
     return (
         <div className="add-category-form">
+
+          {
+            isLoading && <Spinner variant="primary" animation="border" />
+          }
+
+          {
+            message && <Alert variant = {status ==='success' ? 'success' : 'danger'}>
+              {message}
+            </Alert>
+          }
 
 <Form onSubmit={handleOnSubmit}>
   <Form.Row>
