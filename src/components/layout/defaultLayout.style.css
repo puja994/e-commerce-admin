@@ -16,6 +16,10 @@
     z-index: 99;
     
 }
+
+hr.divider{
+    border-top: 1px solid white;
+}
 .footer{
     background: grey;
     color: white;  

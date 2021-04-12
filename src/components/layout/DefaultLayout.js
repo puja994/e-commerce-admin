@@ -11,6 +11,7 @@ import SideBarNav from '../sidebar/SideBarNav'
         <div className="default-layout">
          <div className="left-bar">
              <div className="admin-log p-2 mb-5">Admin pannel</div>
+             <hr  className="divider" />
        <SideBarNav/>
          </div>
              
