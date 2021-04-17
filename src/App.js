@@ -2,6 +2,8 @@
 import {DefaultLayout} from './components/layout/DefaultLayout'
 import {Login} from './pages/login/Login'
 import Dashboard from './pages/dashboard/Dashboard'
+import {AddProduct} from './pages/product/AddProduct'
+import Product from './pages/product/Product.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,6 +25,14 @@ function App() {
 
       <Route  path='/category'> 
       <Category /> 
+      </Route>
+
+      <Route exact path='/products'> 
+      <Product /> 
+      </Route>
+      
+      <Route exact  path='/product/new'> 
+      <AddProduct /> 
       </Route>
 
 

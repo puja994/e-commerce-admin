@@ -9,32 +9,32 @@ const SideBarNav = () => {
             <ul>
                 <li>
                 <Link to="/dashboard">
-                <i class="fas fa-columns"></i>Dashboard </Link>
+                <i className="fas fa-columns"></i>Dashboard </Link>
                 </li>
 
                 <li>
                 <Link to="/category">
-                <i class="far fa-user"></i>Category </Link>
+                <i className="far fa-user"></i>Category </Link>
                 </li>
 
                 <li>
                 <Link to="/products">
-                <i class="fab fa-product-hunt"></i>Products </Link>
+                <i className="fab fa-product-hunt"></i>Products </Link>
                 </li>
 
                 <li>
                 <Link to="/orders">
-                <i class="fab fa-first-order"></i>Orders </Link>
+                <i className="fab fa-first-order"></i>Orders </Link>
                 </li>
 
                 <li>
                 <Link to="/users">
-                <i class="fas fa-user"></i>Users </Link>
+                <i className="fas fa-user"></i>Users </Link>
                 </li>
 
                 <li>
                 <Link to="/account">
-                <i class="fas fa-file-invoice"></i>Accounts </Link>
+                <i className="fas fa-file-invoice"></i>Accounts </Link>
                 </li>
                 
 
