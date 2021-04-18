@@ -1,5 +1,8 @@
 import React , {useState} from 'react'
-import {Form,Button, InputGroup, Switch} from 'react-bootstrap'
+import {useDispatch, useSelector} from 'react-redux'
+import {Form,Button, InputGroup, Spinner, Alert} from 'react-bootstrap'
+//import { addNewProduct } from '../../pages/product/productAction'
+import {addNewProduct} from '../../pages/product/productAction'
 
 // const product ={
 //     name,
@@ -8,7 +11,7 @@ import {Form,Button, InputGroup, Switch} from 'react-bootstrap'
 //     description,
 //     price,
 //     salePrice,
-//saleprice end date
+// saleprice end date
 //     images: [],
 //     thumbnail,
 //     categories[]
@@ -33,8 +36,10 @@ categories: []
 
 
 export const AddProductForm = () => {
+  const dispatch = useDispatch()
 
     const [newProduct, setNewProduct] = useState(initialState)
+    const {isLoading, status, message} = useSelector(state => state.product)
 
     const handleOnChange = e =>{
         const{name,value} = e.target
@@ -48,9 +53,21 @@ export const AddProductForm = () => {
 
     const handleOnSubmit = e=>{
         e.preventDefault()
+       dispatch(addNewProduct(newProduct)) 
     }
     return (
         <div>
+
+         {
+            isLoading && <Spinner variant="primary" animation="border" />
+          }
+
+          {
+            message && <Alert variant = {status ==='success' ? 'success' : 'danger'}>
+              {message}
+            </Alert>
+          }
+
             <Form onSubmit={handleOnSubmit}>
   <Form.Group controlId="formBasicEmail">
     <Form.Label>name</Form.Label>
@@ -79,7 +96,7 @@ export const AddProductForm = () => {
 
   <Form.Group >
     <Form.Label>sale end date</Form.Label>
-    <Form.Control name="salePriceEndDate" type="date" value={newProduct.saleEndDate} onChange={handleOnChange}/>
+    <Form.Control name="saleEndDate" type="date" value={newProduct.saleEndDate} onChange={handleOnChange}/>
   </Form.Group>
 
   <Form.Group >
@@ -114,6 +131,7 @@ export const AddProductForm = () => {
     Submit
   </Button>
 </Form>
+{isLoading && <Spinner variant="primary" animation="border" />}
         </div>
     )
 }

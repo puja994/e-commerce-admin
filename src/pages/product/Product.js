@@ -1,16 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useHistory } from "react-router-dom"
 import  DefaultLayout  from '../../components/layout/DefaultLayout'
-import {Button} from 'react-bootstrap'
-import {ProductListTable} from '../../components/product-table/ProductListTable'
+import {Button, Spinner, Alert} from 'react-bootstrap'
+import ProductListTable from '../../components/product-table/ProductListTable'
+//import {fetchProduct} from './productAction'
 
 const Product = () => {
     const history = useHistory()
+    // const 
+
+    // useEffect(() => {
+        
+    //     }
+    // }, [input])
     return (
         <div>
            <DefaultLayout>
                
-               product
+               
                <div className="product">
                    <h1>Products</h1>
                    <Button variant="success"
