@@ -1,7 +1,7 @@
 
-import {requestPending, fetchProductSucess,  requestFail,  } from './selectedProductSlice'
+import {requestPending, fetchProductSucess,  requestFail,updateProductSuccess  } from './selectedProductSlice'
 
-import {getAProduct} from '../../apis/productAPI'
+import {getAProduct, updateProduct} from '../../apis/productAPI'
 
 // export const addNewProduct = frmDt => async dispatch =>{
 // //call api or reducer to update the state
@@ -39,6 +39,22 @@ export const fetchAProduct = _id => async dispatch =>{
     }
     }
 
+    export const updateAProduct = formDt => async dispatch =>{
+        //call api or reducer to update the state
+        try{
+            dispatch(requestPending())
+             const result =  await updateProduct(formDt)
+             
+            dispatch(updateProductSuccess(result))
+        } 
+        catch (error){
+        const err = {
+            status: 'error',
+            message: error.message,
+        }
+        dispatch(requestFail(err))
+        }
+        }
     
 
 

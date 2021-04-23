@@ -7,8 +7,8 @@ import {useParams} from 'react-router-dom'
 
 export const EditProduct = () => {
 
-    const {_id} = useParams()
-    console.log("from edit pro", useParams())
+    //const {_id} = useParams()
+    //console.log("from edit pro", useParams())
     return (
         <DefaultLayout>
             <h1>Edit products</h1>

@@ -1,9 +1,9 @@
 import React from 'react'
 import DefaultLayout from '../../components/layout/DefaultLayout'
 import { AddProductForm } from '../../components/add-product-form/AddProductForm'
-import {Card, Spinner, Alert} from 'react-bootstrap'
+import {Card} from 'react-bootstrap'
 
-export const AddProduct = () => {
+ const AddProduct = () => {
     return (
         <DefaultLayout>
             <h1>Add new products</h1>
@@ -16,3 +16,4 @@ export const AddProduct = () => {
         </DefaultLayout>
     )
 }
+export default AddProduct

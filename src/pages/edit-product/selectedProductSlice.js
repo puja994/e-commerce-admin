@@ -6,6 +6,7 @@ const initialState={
     message: "",
     deleteMsg: "",
     product: {},
+    
 }
 const selectedProductSlice = createSlice({
     name: "editProduct",
@@ -15,11 +16,11 @@ const selectedProductSlice = createSlice({
             state.isLoading = true
         },
 
-        // addProductSuccess: (state, {payload})=>{
-        //     state.isLoading =false
-        //     state.status = payload.status
-        //     state.message = payload.message
-        // },
+        updateProductSuccess: (state, {payload})=>{
+            state.isLoading =false
+            state.status = payload.status
+            state.message = payload.message
+        },
 
         fetchProductSucess: (state, {payload})=>{
             state.product = payload.result || {}
@@ -45,7 +46,7 @@ const {reducer, actions} = selectedProductSlice
 export const {requestPending, 
     
     fetchProductSucess, 
-    requestFail, 
+    requestFail, updateProductSuccess
     
 } = actions
 
