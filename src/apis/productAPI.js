@@ -1,68 +1,68 @@
-import axios from 'axios'
-const rootUrl = "http://localhost:8000/api/v1/"
-const prodApi = rootUrl + 'product'
+import axios from "axios";
 
-export const saveProduct =  frmDt =>{
-    return new Promise (async(resolve,reject)=>{
-    try{
-        const { data } = await axios.post(prodApi, frmDt, {
-            headers: {
-                "Content-type": "multipart/form-data",
-            },
-        });
-        
-        resolve(data)
+const rootUrl = "http://localhost:8000/api/v1/";
+const prodApi = rootUrl + "product";
 
-    }catch(error){
-        reject(error)
-    }
-    })
+export const saveProduct = frmDt => {
+	return new Promise(async (resolve, reject) => {
+		try {
+			const { data } = await axios.post(prodApi, frmDt, {
+				headers: {
+					"Content-type": "multipart/form-data",
+				},
+			});
+
+			resolve(data);
+		} catch (error) {
+			reject(error);
+		}
+	});
 };
 
-export const getProducts = () =>{
-    return new Promise (async(resolve,reject)=>{
-    try{
-        const {data} = await axios.get(prodApi)
-        resolve(data)
+export const getProducts = () => {
+	return new Promise(async (resolve, reject) => {
+		try {
+			const { data } = await axios.get(prodApi);
 
-    }catch(error){
-        reject(error)
-    }
-    })
+			resolve(data);
+		} catch (error) {
+			reject(error);
+		}
+	});
 };
 
-export const getAProduct = _id =>{
-    return new Promise (async(resolve,reject)=>{
-    try{
-        const {data} = await axios.get(prodApi + "/" + _id)
-        resolve(data)
+export const getAProduct = _id => {
+	return new Promise(async (resolve, reject) => {
+		try {
+			const { data } = await axios.get(prodApi + "/" + _id);
 
-    }catch(error){
-        reject(error)
-    }
-    })
+			resolve(data);
+		} catch (error) {
+			reject(error);
+		}
+	});
 };
 
-export const productDelete = _id =>{
-    return new Promise (async(resolve,reject)=>{
-    try{
-        const {data} = await axios.delete(prodApi, {data: {_id}})
-        resolve(data)
+export const updateProduct = formDt => {
+	return new Promise(async (resolve, reject) => {
+		try {
+			const { data } = await axios.put(prodApi, formDt);
 
-    }catch(error){
-        reject(error)
-    }
-    })
+			resolve(data);
+		} catch (error) {
+			reject(error);
+		}
+	});
 };
 
-export const updateProduct = formDt =>{
-    return new Promise (async(resolve,reject)=>{
-    try{
-        const {data} = await axios.put(prodApi ,formDt)
-        resolve(data)
+export const productDelete = _id => {
+	return new Promise(async (resolve, reject) => {
+		try {
+			const { data } = await axios.delete(prodApi, { data: { _id } });
 
-    }catch(error){
-        reject(error)
-    }
-    })
+			resolve(data);
+		} catch (error) {
+			reject(error);
+		}
+	});
 };

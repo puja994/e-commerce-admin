@@ -1,37 +1,27 @@
-import React, {useEffect} from 'react'
-import { useHistory } from "react-router-dom"
-import  DefaultLayout  from '../../components/layout/DefaultLayout'
-import {Button, Spinner, Alert} from 'react-bootstrap'
-import ProductListTable from '../../components/product-table/ProductListTable'
-//import {fetchProduct} from './productAction'
+import React from "react";
+import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+
+import DefaultLayout from "../../components/layout/DefaultLayout";
+import ProductListTable from "../../components/product-table/ProductListTable";
 
 const Product = () => {
-    const history = useHistory()
-    // const 
+	const history = useHistory();
 
-    // useEffect(() => {
-        
-    //     }
-    // }, [input])
-    return (
-        <div>
-           <DefaultLayout>
-               
-               
-               <div className="product">
-                   <h1>Products</h1>
-                   <Button variant="success"
-                   onClick= {()=>history.push("/product/new")}
-                   
-                   >Add new product</Button>
-                   <div className="product-lists">
-                       <ProductListTable />
-                   </div>
-               </div>
+	return (
+		<DefaultLayout>
+			<div className="product">
+				<h1>Products</h1>
+				<Button variant="success" onClick={() => history.push("/product/new")}>
+					Add New Product
+				</Button>
 
-           </DefaultLayout>
-        </div>
-    )
-}
+				<div className="product-lists">
+					<ProductListTable />
+				</div>
+			</div>
+		</DefaultLayout>
+	);
+};
 
 export default Product;

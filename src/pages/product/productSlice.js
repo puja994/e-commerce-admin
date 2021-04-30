@@ -1,52 +1,53 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState={
-    isLoading: false,
-    status: "",
-    message: "",
-    deleteMsg: "",
-    productList: [],
-}
+const initialState = {
+	isLoading: false,
+	status: "",
+	message: "",
+	deleteMsg: "",
+	productList: [],
+};
+
 const productSlice = createSlice({
-    name: "product",
-    initialState,
-    reducers:{
-        requestPending: (state)=>{
-            state.isLoading = true
-        },
+	name: "product",
+	initialState,
+	reducers: {
+		requestPending: state => {
+			state.isLoading = true;
+		},
+		addProductSuccess: (state, { payload }) => {
+			state.isLoading = false;
+			state.status = payload.status;
+			state.message = payload.message;
+		},
 
-        addProductSuccess: (state, {payload})=>{
-            state.isLoading =false
-            state.status = payload.status
-            state.message = payload.message
-        },
+		fetchAllProductSuccess: (state, { payload }) => {
+			state.productList = payload.result || [];
+			state.isLoading = false;
+		},
 
-        fetchAllProductSuccess: (state, {payload})=>{
-            state.productList = payload.result || []
-            state.isLoading =false
+		deleteProductSuccess: (state, { payload }) => {
+			state.isLoading = false;
+			state.status = payload.status;
+			state.deleteMsg = payload.message;
+		},
 
-        },
-        requestFail: (state, {payload})=>{
-           state.isLoading = false
+		requestFail: (state, { payload }) => {
+			state.isLoading = false;
+			state.status = payload.status;
+			state.message = payload.message;
+		},
+	},
+});
 
-            state.status = payload.status
-            state.message = payload.message
-        },
+const { reducer, actions } = productSlice;
 
-        deleteProductSuccess: (state, {payload})=>{
-            state.isLoading =false
-            state.status = payload.status
-            state.deleteMsg = payload.message
-        },
-   }
-})
+export const {
+	requestPending,
+	addProductSuccess,
+	fetchAllProductSuccess,
+	requestFail,
+	deleteProductSuccess,
+} = actions;
 
-const {reducer, actions} = productSlice
-export const {requestPending, 
-    addProductSuccess, 
-    fetchAllProductSuccess, 
-    requestFail, 
-    deleteProductSuccess
-} = actions
-
-export default reducer
+export default reducer;

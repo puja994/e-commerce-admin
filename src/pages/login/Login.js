@@ -1,15 +1,13 @@
-import React from 'react'
-import './login.style.css'
+import React from "react";
+import { LoginForm } from "../../components/login-form/LoginForm";
+import "./login.style.css";
 
-import {LoginForm} from '../../components/login-form/LoginForm'
+const Login = () => {
+	return (
+		<div className="login-page bg-dark">
+			<LoginForm />
+		</div>
+	);
+};
 
-
-
-export const Login = () => {
-    return (
-        <div className="login-page">
-            <LoginForm />
-         
-        </div>
-    )
-}
+export default Login;

@@ -13,7 +13,7 @@ const ProductListTable = () => {
 
 	const { isLoading, status, deleteMsg, productList } = useSelector(
 		state => state.product
-	)
+	);
 
 	useEffect(() => {
 		dispatch(fetchProducts());
@@ -21,7 +21,7 @@ const ProductListTable = () => {
 
 	const handleOnDelete = _id => {
 		dispatch(deleteProduct(_id));
-	}
+	};
 
 	return (
 		<div>

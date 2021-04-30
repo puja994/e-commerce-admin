@@ -1,61 +1,55 @@
+import Login from "./pages/login/Login";
+import PasswordReset from "./pages/password-reset/PasswordReset";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import {DefaultLayout} from './components/layout/DefaultLayout'
-import {Login} from './pages/login/Login'
-import Dashboard from './pages/dashboard/Dashboard'
-import AddProduct from './pages/product/AddProduct'
-import Product from './pages/product/Product.js'
-import {EditProduct} from './pages/edit-product/EditProduct'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import './App.css';
-import PasswordReset from './pages/password-reset/PasswordReset';
-import Category from './pages/category/Category'
+import Dashboard from "./pages/dashboard/Dashboard";
+import Category from "./pages/category/Category";
+import Product from "./pages/product/Product";
+import AddProduct from "./pages/product/AddProduct";
+import EditProduct from "./pages/edit-product/EditProduct";
+import { PrivateRoute } from "./components/private-route/PrivateRoute";
+
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-  <Router>
-    <Switch>
-      <Route exact path='/dashboard'> 
-      <Dashboard /> 
-      </Route>
+	return (
+		<div className="App">
+			<Router>
+				<Switch>
+					<PrivateRoute exact path="/dashboard">
+						<Dashboard />
+					</PrivateRoute>
 
-      <Route  path='/category'> 
-      <Category /> 
-      </Route>
+					<PrivateRoute exact path="/category">
+						<Category />
+					</PrivateRoute>
+					<PrivateRoute exact path="/products">
+						<Product />
+					</PrivateRoute>
 
-      <Route exact path='/products'> 
-      <Product /> 
-      </Route>
+					<PrivateRoute exact path="/product/new">
+						<AddProduct />
+					</PrivateRoute>
 
-      <Route exact  path='/product/new'> 
-      <AddProduct /> 
-      </Route>
-      
-      <Route exact path='/product/:_id'> 
-      <EditProduct /> 
-      </Route>
-      
-      
+					<PrivateRoute exact path="/product/:_id">
+						<EditProduct />
+					</PrivateRoute>
 
+					<Route exact path="/reset-password">
+						<PasswordReset />
+					</Route>
 
-      <Route path='/reset-password'> 
-      <PasswordReset /> 
-      </Route>
+					<Route exact path="/">
+						<Login />
+					</Route>
 
-      <Route path='/'> 
-      <Login /> 
-      </Route>
-      
-    </Switch>
-     </Router>
-    
-    </div>
-  );
+					<Route exact path="*">
+						<h1>404 Page not found</h1>
+					</Route>
+				</Switch>
+			</Router>
+		</div>
+	);
 }
 
 export default App;

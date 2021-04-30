@@ -1,53 +1,45 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState={
-    isLoading: false,
-    status: "",
-    message: "",
-    deleteMsg: "",
-    product: {},
-    
-}
+const initialState = {
+	isLoading: false,
+	status: "",
+	message: "",
+	product: {},
+};
+
 const selectedProductSlice = createSlice({
-    name: "editProduct",
-    initialState,
-    reducers:{
-        requestPending: (state)=>{
-            state.isLoading = true
-        },
+	name: "editProduct",
+	initialState,
+	reducers: {
+		requestPending: state => {
+			state.isLoading = true;
+		},
+		updateProductSuccess: (state, { payload }) => {
+			state.isLoading = false;
+			state.status = payload.status;
+			state.message = payload.message;
+		},
 
-        updateProductSuccess: (state, {payload})=>{
-            state.isLoading =false
-            state.status = payload.status
-            state.message = payload.message
-        },
+		fetchProductSuccess: (state, { payload }) => {
+			state.product = payload.result || {};
+			state.isLoading = false;
+		},
 
-        fetchProductSucess: (state, {payload})=>{
-            state.product = payload.result || {}
-            state.isLoading =false
+		requestFail: (state, { payload }) => {
+			state.isLoading = false;
+			state.status = payload.status;
+			state.message = payload.message;
+		},
+	},
+});
 
-        },
-        requestFail: (state, {payload})=>{
-           state.isLoading = false
+const { reducer, actions } = selectedProductSlice;
 
-            state.status = payload.status
-            state.message = payload.message
-        },
+export const {
+	requestPending,
+	fetchProductSuccess,
+	updateProductSuccess,
+	requestFail,
+} = actions;
 
-        // deleteProductSuccess: (state, {payload})=>{
-        //     state.isLoading =false
-        //     state.status = payload.status
-        //     state.deleteMsg = payload.message
-        // },
-   }
-})
-
-const {reducer, actions} = selectedProductSlice
-export const {requestPending, 
-    
-    fetchProductSucess, 
-    requestFail, updateProductSuccess
-    
-} = actions
-
-export default reducer
+export default reducer;

@@ -1,24 +1,21 @@
-import React from 'react'
-import DefaultLayout from '../../components/layout/DefaultLayout'
-import { AddProductForm } from '../../components/add-product-form/AddProductForm'
-import {Card, Spinner, Alert} from 'react-bootstrap'
-import { EditProductForm } from '../../components/edit-product-form/EditProductForm'
-import {useParams} from 'react-router-dom'
+import React from "react";
+import { Card } from "react-bootstrap";
+import { EditProductForm } from "../../components/edit-product-form/EditProductForm";
+import DefaultLayout from "../../components/layout/DefaultLayout";
 
-export const EditProduct = () => {
+const EditProduct = () => {
+	return (
+		<DefaultLayout>
+			<h1>Update Product</h1>
+			<hr />
 
-    //const {_id} = useParams()
-    //console.log("from edit pro", useParams())
-    return (
-        <DefaultLayout>
-            <h1>Edit products</h1>
-            <hr />
-            <div className="add-new-product-form">
-                <Card className="p-4">
-                {/*<AddProductForm />*/}
-                <EditProductForm />
-                </Card>
-            </div>
-        </DefaultLayout>
-    )
-}
+			<div className="add-new-product-form">
+				<Card className="p-4">
+					<EditProductForm />
+				</Card>
+			</div>
+		</DefaultLayout>
+	);
+};
+
+export default EditProduct;
