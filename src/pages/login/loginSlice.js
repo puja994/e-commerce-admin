@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	isLoading: false,
 	loginResponse: {},
+
 	isAuth: false,
 };
 
@@ -26,6 +27,12 @@ const loginSlice = createSlice({
 			state.isAuth = true;
 		},
 
+		logoutSuccess: (state, { payload }) => {
+			// state.loginResponse = payload || {};
+			state.isLoading = false;
+			state.isAuth = false;
+		},
+
 		requestFail: (state, { payload }) => {
 			state.isLoading = false;
 			state.loginResponse = payload || {};
@@ -39,6 +46,7 @@ export const {
 	requestPending,
 	loginSuccess,
 	updateLogin,
+	logoutSuccess,
 	requestFail,
 } = actions;
 
